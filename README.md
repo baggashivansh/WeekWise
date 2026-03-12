@@ -1,171 +1,221 @@
 # WeekWise
 
-WeekWise is a minimal time visualization app that turns your lock screen into a quiet reminder of how time moves.
+## A Visual Time Awareness Application
 
-Instead of tracking time through numbers and dates, WeekWise shows time as simple grids. Each square represents a unit of time. As time passes, the grid fills. This creates a visual sense of progress that updates automatically.
+WeekWise is a minimal time visualization application that transforms the passage of time into a simple visual grid.
 
-The idea is simple: life moves forward one week at a time. Seeing that visually changes how people think about their time.
+Instead of thinking about time through calendars, numbers, or dates, WeekWise represents time using small squares where each square represents a unit of time. As time passes, more squares are filled.
+
+This creates a visual representation of how time moves forward.
+
+The grid automatically updates based on the current date and can be displayed as a device wallpaper, turning the lock screen into a quiet reminder of time passing.
 
 ---
 
-## Core Idea
+# Overview
 
-WeekWise transforms time into visual grids.
+Most productivity tools require users to actively open the application to track progress.
 
-Life becomes a grid of weeks.  
-A year becomes a grid of weeks.  
+WeekWise takes a different approach.
+
+People check their phones or computers hundreds of times a day. By displaying time progress directly on the wallpaper, the application creates passive awareness without requiring any manual interaction.
+
+Instead of numbers and schedules, time becomes a simple visual pattern.
+
+Example concepts used in WeekWise:
+
+Life → represented as weeks
+Year → represented as weeks
+Month → represented as days
+
+Each square represents a time unit, and filled squares represent time that has already passed.
+
+---
+
+# Core Idea
+
+WeekWise visualizes time through grids.
+
+Life becomes a grid of weeks.
+A year becomes a grid of weeks.
 A month becomes a grid of days.
 
-Every time a new day or week passes, the wallpaper updates and fills the next square.
+Every time a day or week passes, the application fills the next square in the grid.
 
-This creates a subtle but powerful reminder every time the user unlocks their phone or laptop.
+The result is a visual timeline that grows automatically over time.
+
+This design encourages users to become more aware of how time progresses.
 
 ---
 
-## Features
+# Features
 
-### Life View
+## Life View
 
-Visualize an entire lifetime in weeks.
+Life View represents an entire lifetime in weeks.
 
-- 90 years
-- 52 weeks per year
-- Approximately 4680 squares
+Assuming a lifespan of 90 years:
+
+90 years × 52 weeks = approximately 4680 weeks
 
 Each square represents one week of life.
 
-Filled squares show weeks already lived.
+Squares that are already filled represent weeks that have already passed.
+
+This creates a visual representation of life progression.
 
 ---
 
-### Year View
+## Year View
 
-Track the progress of the current year.
+Year View visualizes the progress of the current year.
 
-- 52 squares
-- 1 square equals 1 week
+52 squares represent the 52 weeks of a year.
 
-As each week passes, the next square fills automatically.
+Every week that passes fills the next square.
 
-This makes it easy to see how quickly the year is moving.
-
----
-
-### Month View
-
-Track progress through the current month.
-
-- Each square represents one day
-- Grid updates daily
-- Helps users stay aware of daily progress
+This makes it easy to understand how much of the year has already passed.
 
 ---
 
-### Live Wallpaper
+## Month View
 
-WeekWise runs as a live wallpaper that updates automatically.
+Month View tracks the progress of the current month.
 
-The grid refreshes based on the current date so users always see the correct progress.
+Each square represents one day.
 
-No manual updates required.
+The grid updates daily to reflect the current date.
 
----
-
-### Cross Device Support
-
-WeekWise is designed to work across multiple devices.
-
-- Android phones (live wallpaper)
-- macOS laptops (auto updating desktop wallpaper)
-- Web generator for downloadable wallpapers
+This helps users maintain awareness of daily progress.
 
 ---
 
-## How It Works
+## Live Wallpaper
 
-The application calculates time progress using the current date.
+WeekWise can run as a live wallpaper that updates automatically.
+
+The application recalculates the grid based on the current date and refreshes the wallpaper.
+
+Because the update happens automatically, the visualization always reflects the correct time progression.
+
+---
+
+## Cross Device Support
+
+WeekWise is designed to work across multiple platforms.
+
+Supported platforms may include:
+
+Android phones using live wallpaper services
+macOS laptops using automated wallpaper updates
+Web-based generators for downloadable wallpapers
+
+This allows users to use the visualization across devices.
+
+---
+
+# How It Works
+
+The core logic calculates time progression based on the current date.
 
 Example logic:
 
-```
 weeksLived = (currentDate - birthDate) / 7
-```
 
-The app then renders a grid and fills squares based on progress.
+Once the number of weeks lived is calculated, the application generates a grid and fills the corresponding number of squares.
 
-This grid is drawn dynamically and displayed as the device wallpaper.
+The grid is then rendered and displayed as a wallpaper.
 
----
+Basic system flow:
 
-## Architecture
-
-WeekWise uses a simple rendering engine to generate time grids.
-
-```
 current date
 ↓
 calculate progress
 ↓
 generate grid
 ↓
-render wallpaper
-```
+render visualization
+↓
+display wallpaper
 
-The same logic powers all visualization modes.
+The same logic is used for life view, year view, and month view.
 
 ---
 
-## Tech Stack
+# System Architecture
 
-Possible implementation stack:
+WeekWise uses a lightweight rendering pipeline.
 
-Android
-- Kotlin
-- WallpaperService
-- Canvas rendering
+Current Date
+↓
+Time Progress Calculator
+↓
+Grid Generator
+↓
+Renderer
+↓
+Wallpaper Output
+
+This architecture allows the same core logic to power multiple visualization modes.
+
+---
+
+# Technology Stack
+
+Possible implementation technologies include:
+
+Android Application
+
+Kotlin
+WallpaperService
+Canvas rendering
 
 Web Generator
-- HTML
-- CSS
-- JavaScript
-- Canvas API
 
-macOS Desktop
-- Script based wallpaper updater
+HTML
+CSS
+JavaScript
+Canvas API
 
----
+Desktop Implementation
 
-## Future Ideas
-
-Possible improvements and features:
-
-- Custom life expectancy settings
-- Goal countdown grids
-- Minimalist theme options
-- Lock screen widgets
-- iOS shortcut automation
-- Yearly reflection insights
+Script based wallpaper updater for macOS
 
 ---
 
-## Philosophy
+# Future Enhancements
 
-WeekWise is built around a simple idea.
+Several features could extend the capabilities of WeekWise.
 
-People rarely open productivity apps every day, but they look at their lock screen hundreds of times.
+Custom life expectancy settings
+Goal countdown grids
+Minimalist theme options
+Lock screen widgets
+iOS shortcut automation
+Yearly reflection insights
 
-By turning time into a visual grid that lives on the wallpaper, WeekWise becomes a quiet reminder that time is always moving forward.
-
-Not to create pressure, but awareness.
+These improvements would make the application more flexible while keeping the core design minimal.
 
 ---
 
-## License
+# Philosophy
+
+WeekWise is built on a simple observation.
+
+People rarely open productivity apps every day, but they unlock their devices many times daily.
+
+By turning time into a visual grid displayed on the wallpaper, WeekWise quietly reminds users that time is always moving forward.
+
+The goal is not to create pressure, but awareness.
+
+---
+
+# License
 
 This project is open for experimentation and personal use.
 
 ---
 
-## Author
+# Author
 
-Built by Shivansh Bagga
+Built by **Shivansh Bagga**
