@@ -1,221 +1,204 @@
 # WeekWise
 
-## A Visual Time Awareness Application
+A personal productivity tracking system built with **Java, Spring Boot, and a lightweight frontend**.
 
-WeekWise is a minimal time visualization application that transforms the passage of time into a simple visual grid.
+WeekWise helps users track how they spend their time on a daily basis and understand productivity patterns through simple data driven insights.
 
-Instead of thinking about time through calendars, numbers, or dates, WeekWise represents time using small squares where each square represents a unit of time. As time passes, more squares are filled.
+Many people track productivity mentally or through scattered notes. WeekWise demonstrates how a structured backend system can store activity data and convert it into meaningful insights such as daily and weekly totals.
 
-This creates a visual representation of how time moves forward.
-
-The grid automatically updates based on the current date and can be displayed as a device wallpaper, turning the lock screen into a quiet reminder of time passing.
+This project focuses on building a **backend driven system with a functional UI layer**, showing how data flows from user input to persistent storage and back to actionable insights.
 
 ---
 
-# Overview
+# Live Application
 
-Most productivity tools require users to actively open the application to track progress.
+Frontend
+URL will be added later
 
-WeekWise takes a different approach.
+Backend
+Backend URL will be added later
 
-People check their phones or computers hundreds of times a day. By displaying time progress directly on the wallpaper, the application creates passive awareness without requiring any manual interaction.
-
-Instead of numbers and schedules, time becomes a simple visual pattern.
-
-Example concepts used in WeekWise:
-
-Life → represented as weeks
-Year → represented as weeks
-Month → represented as days
-
-Each square represents a time unit, and filled squares represent time that has already passed.
+If the backend service is inactive, the first request may take a few seconds while the server wakes up because it runs on a free hosting tier.
 
 ---
 
-# Core Idea
+# What WeekWise Provides
 
-WeekWise visualizes time through grids.
+WeekWise acts as a productivity tracking backend with a connected UI layer.
 
-Life becomes a grid of weeks.
-A year becomes a grid of weeks.
-A month becomes a grid of days.
+It provides:
 
-Every time a day or week passes, the application fills the next square in the grid.
+* A structured API for recording daily activities
+* A backend service for retrieving activity data
+* A system for calculating productivity insights
+* A lightweight frontend for interacting with the backend
 
-The result is a visual timeline that grows automatically over time.
-
-This design encourages users to become more aware of how time progresses.
-
----
-
-# Features
-
-## Life View
-
-Life View represents an entire lifetime in weeks.
-
-Assuming a lifespan of 90 years:
-
-90 years × 52 weeks = approximately 4680 weeks
-
-Each square represents one week of life.
-
-Squares that are already filled represent weeks that have already passed.
-
-This creates a visual representation of life progression.
+The system allows users to log activities and immediately understand how their time is being spent.
 
 ---
 
-## Year View
+# Key Features
 
-Year View visualizes the progress of the current year.
+* Create and store activity records
 
-52 squares represent the 52 weeks of a year.
+* Retrieve all activities
 
-Every week that passes fills the next square.
+* Filter activities by date
 
-This makes it easy to understand how much of the year has already passed.
+* Delete activity entries
 
----
+* View total time spent:
 
-## Month View
+  * Today
+  * This week
 
-Month View tracks the progress of the current month.
+* REST based backend architecture
 
-Each square represents one day.
+* Automatic database table creation using JPA
 
-The grid updates daily to reflect the current date.
-
-This helps users maintain awareness of daily progress.
-
----
-
-## Live Wallpaper
-
-WeekWise can run as a live wallpaper that updates automatically.
-
-The application recalculates the grid based on the current date and refreshes the wallpaper.
-
-Because the update happens automatically, the visualization always reflects the correct time progression.
-
----
-
-## Cross Device Support
-
-WeekWise is designed to work across multiple platforms.
-
-Supported platforms may include:
-
-Android phones using live wallpaper services
-macOS laptops using automated wallpaper updates
-Web-based generators for downloadable wallpapers
-
-This allows users to use the visualization across devices.
-
----
-
-# How It Works
-
-The core logic calculates time progression based on the current date.
-
-Example logic:
-
-weeksLived = (currentDate - birthDate) / 7
-
-Once the number of weeks lived is calculated, the application generates a grid and fills the corresponding number of squares.
-
-The grid is then rendered and displayed as a wallpaper.
-
-Basic system flow:
-
-current date
-↓
-calculate progress
-↓
-generate grid
-↓
-render visualization
-↓
-display wallpaper
-
-The same logic is used for life view, year view, and month view.
-
----
-
-# System Architecture
-
-WeekWise uses a lightweight rendering pipeline.
-
-Current Date
-↓
-Time Progress Calculator
-↓
-Grid Generator
-↓
-Renderer
-↓
-Wallpaper Output
-
-This architecture allows the same core logic to power multiple visualization modes.
+* Responsive UI with clean interaction flow
 
 ---
 
 # Technology Stack
 
-Possible implementation technologies include:
+Backend
+Java
+Spring Boot
+Spring Data JPA
 
-Android Application
+Database
+H2 File Based Database
 
-Kotlin
-WallpaperService
-Canvas rendering
-
-Web Generator
-
+Frontend
 HTML
 CSS
-JavaScript
-Canvas API
+Vanilla JavaScript
 
-Desktop Implementation
+Build Tool
+Maven
 
-Script based wallpaper updater for macOS
-
----
-
-# Future Enhancements
-
-Several features could extend the capabilities of WeekWise.
-
-Custom life expectancy settings
-Goal countdown grids
-Minimalist theme options
-Lock screen widgets
-iOS shortcut automation
-Yearly reflection insights
-
-These improvements would make the application more flexible while keeping the core design minimal.
+Deployment
+Render (Backend)
+Netlify (Frontend)
 
 ---
 
-# Philosophy
+# System Architecture
 
-WeekWise is built on a simple observation.
+WeekWise follows a layered architecture where each layer has a clear responsibility.
 
-People rarely open productivity apps every day, but they unlock their devices many times daily.
+Controller Layer
+Handles incoming HTTP requests and exposes REST endpoints
 
-By turning time into a visual grid displayed on the wallpaper, WeekWise quietly reminds users that time is always moving forward.
+Service Layer
+Contains business logic including validation and time aggregation
 
-The goal is not to create pressure, but awareness.
+Repository Layer
+Handles database interaction using Spring Data JPA
+
+Database Layer
+Stores activity records in an H2 database
+
+Frontend Layer
+Provides a user interface to interact with backend APIs
+
+This separation keeps the system modular, maintainable, and scalable.
 
 ---
 
-# License
+# How Activity Tracking Works in WeekWise
 
-This project is open for experimentation and personal use.
+The system tracks productivity through structured activity logging.
+
+1. A user logs an activity with name, duration, and date
+2. The request is sent to the backend API
+3. The controller forwards the request to the service layer
+4. The service layer processes and validates the data
+5. The repository layer stores the activity in the database
+6. The backend returns a structured response
+7. The frontend updates the UI and displays insights
+
+For insights:
+
+* Daily total is calculated by summing durations for the current date
+* Weekly total is calculated over a rolling 7 day window
+
+This allows users to move from raw data to meaningful productivity patterns.
+
+---
+
+# Running the Project Locally
+
+## Clone the repository
+
+git clone https://github.com/your-username/weekwise.git
+
+cd weekwise
+
+---
+
+## Build the project
+
+mvn clean install
+
+This compiles and prepares the application.
+
+---
+
+## Run the application
+
+mvn spring-boot:run
+
+Once started, access:
+
+http://localhost:8080
+
+---
+
+# Accessing the Database
+
+WeekWise uses an **H2 file based database** for persistence.
+
+You can access the H2 console at:
+
+http://localhost:8080/h2-console
+
+Use:
+
+JDBC URL
+jdbc:h2:file:./data/weekwise-db
+
+Username
+sa
+
+Password
+leave empty
+
+---
+
+# Example API Endpoints
+
+Create Activity
+POST /api/activities
+
+Get All Activities
+GET /api/activities
+
+Get Activities By Date
+GET /api/activities/date/{date}
+
+Delete Activity
+DELETE /api/activities/{id}
+
+Get Today Total
+GET /api/activities/summary/today
+
+Get Weekly Total
+GET /api/activities/summary/week
 
 ---
 
 # Author
 
-Built by **Shivansh Bagga**
+Built by Shivansh Bagga
