@@ -1,4 +1,4 @@
-const API = "http://localhost:8080/api/activities";
+const API = "https://weekwise-backend-2kad.onrender.com/api/activities";
 
 window.onload = () => {
     setTimeout(() => {
