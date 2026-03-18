@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- ✅ Mobile-first -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>WeekWise</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- Loader -->
+<div id="loader">
+    <div class="spinner"></div>
+    <p>Loading WeekWise...</p>
+</div>
+
+<!-- App -->
+<div class="app hidden">
+
+    <!-- ✅ Sticky Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <h1>WeekWise</h1>
+            <p>Track your time</p>
+        </div>
+    </header>
+
+    <!-- ✅ Main Content -->
+    <main class="container">
+
+        <!-- Stats -->
+        <section class="card stats-card">
+            <div class="stat">
+                <h3 id="todayTotal">0</h3>
+                <p>Today</p>
+            </div>
+            <div class="stat">
+                <h3 id="weekTotal">0</h3>
+                <p>This Week</p>
+            </div>
+        </section>
+
+        <!-- Add Activity -->
+        <section class="card">
+            <h2>Log Activity</h2>
+
+            <form class="form" onsubmit="event.preventDefault(); addActivity();">
+                <input type="text" id="name" placeholder="What did you do?" required>
+
+                <input type="number" id="duration" placeholder="Minutes" required>
+
+                <input type="date" id="date" required>
+
+                <button type="submit">Add</button>
+            </form>
+        </section>
+
+        <!-- Filter -->
+        <section class="card">
+            <h2>Filter</h2>
+
+            <div class="form">
+                <input type="date" id="filterDate">
+
+                <button onclick="filterByDate()">Apply</button>
+
+                <button type="button" class="secondary" onclick="loadActivities()">Reset</button>
+            </div>
+        </section>
+
+        <!-- Table -->
+        <section class="card">
+            <h2>Activity Log</h2>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Activity</th>
+                            <th>Minutes</th>
+                            <th>Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="activityTable">
+                        <!-- empty state -->
+                        <tr>
+                            <td colspan="4" style="opacity:0.6;">
+                                No activities yet
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ✅ Fixed Footer -->
+    <footer class="footer">
+        <span>© 2026 • Built by Shivansh Bagga</span>
+    </footer>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
