@@ -2,6 +2,8 @@
 
 A personal productivity tracking system built with **Java, Spring Boot, and a lightweight frontend**.
 
+👉 Live: https://weekwise.netlify.app
+
 WeekWise helps users track how they spend their time on a daily basis and understand productivity patterns through simple data driven insights.
 
 Many people track productivity mentally or through scattered notes. WeekWise demonstrates how a structured backend system can store activity data and convert it into meaningful insights such as daily and weekly totals.
@@ -10,15 +12,12 @@ This project focuses on building a **backend driven system with a functional UI 
 
 ---
 
-# Live Application
+# 🌐 Live Application
 
-Frontend
-URL will be added later
+- 🖥 Frontend (Netlify): https://weekwise.netlify.app  
+- ⚙ Backend (Render): https://weekwise-backend-2kad.onrender.com  
 
-Backend
-Backend URL will be added later
-
-If the backend service is inactive, the first request may take a few seconds while the server wakes up because it runs on a free hosting tier.
+> Note: Backend may take 20–40 seconds to respond on first request due to cold start (free tier).
 
 ---
 
@@ -40,47 +39,41 @@ The system allows users to log activities and immediately understand how their t
 # Key Features
 
 * Create and store activity records
-
 * Retrieve all activities
-
 * Filter activities by date
-
 * Delete activity entries
 
 * View total time spent:
-
   * Today
   * This week
 
 * REST based backend architecture
-
 * Automatic database table creation using JPA
-
 * Responsive UI with clean interaction flow
 
 ---
 
 # Technology Stack
 
-Backend
-Java
-Spring Boot
-Spring Data JPA
+Backend  
+Java  
+Spring Boot  
+Spring Data JPA  
 
-Database
-H2 File Based Database
+Database  
+H2 File Based Database  
 
-Frontend
-HTML
-CSS
-Vanilla JavaScript
+Frontend  
+HTML  
+CSS  
+Vanilla JavaScript  
 
-Build Tool
-Maven
+Build Tool  
+Maven  
 
-Deployment
-Render (Backend)
-Netlify (Frontend)
+Deployment  
+Render (Backend)  
+Netlify (Frontend)  
 
 ---
 
@@ -88,20 +81,20 @@ Netlify (Frontend)
 
 WeekWise follows a layered architecture where each layer has a clear responsibility.
 
-Controller Layer
-Handles incoming HTTP requests and exposes REST endpoints
+Controller Layer  
+Handles incoming HTTP requests and exposes REST endpoints  
 
-Service Layer
-Contains business logic including validation and time aggregation
+Service Layer  
+Contains business logic including validation and time aggregation  
 
-Repository Layer
-Handles database interaction using Spring Data JPA
+Repository Layer  
+Handles database interaction using Spring Data JPA  
 
-Database Layer
-Stores activity records in an H2 database
+Database Layer  
+Stores activity records in an H2 database  
 
-Frontend Layer
-Provides a user interface to interact with backend APIs
+Frontend Layer  
+Provides a user interface to interact with backend APIs  
 
 This separation keeps the system modular, maintainable, and scalable.
 
@@ -111,18 +104,18 @@ This separation keeps the system modular, maintainable, and scalable.
 
 The system tracks productivity through structured activity logging.
 
-1. A user logs an activity with name, duration, and date
-2. The request is sent to the backend API
-3. The controller forwards the request to the service layer
-4. The service layer processes and validates the data
-5. The repository layer stores the activity in the database
-6. The backend returns a structured response
-7. The frontend updates the UI and displays insights
+1. A user logs an activity with name, duration, and date  
+2. The request is sent to the backend API  
+3. The controller forwards the request to the service layer  
+4. The service layer processes and validates the data  
+5. The repository layer stores the activity in the database  
+6. The backend returns a structured response  
+7. The frontend updates the UI and displays insights  
 
 For insights:
 
-* Daily total is calculated by summing durations for the current date
-* Weekly total is calculated over a rolling 7 day window
+* Daily total is calculated by summing durations for the current date  
+* Weekly total is calculated over a rolling 7 day window  
 
 This allows users to move from raw data to meaningful productivity patterns.
 
@@ -132,27 +125,23 @@ This allows users to move from raw data to meaningful productivity patterns.
 
 ## Clone the repository
 
-git clone https://github.com/your-username/weekwise.git
-
-cd weekwise
+git clone https://github.com/your-username/weekwise.git  
+cd weekwise  
 
 ---
 
 ## Build the project
 
-mvn clean install
-
-This compiles and prepares the application.
+mvn clean install  
 
 ---
 
 ## Run the application
 
-mvn spring-boot:run
+mvn spring-boot:run  
 
-Once started, access:
-
-http://localhost:8080
+Once started, access:  
+http://localhost:8080  
 
 ---
 
@@ -160,42 +149,39 @@ http://localhost:8080
 
 WeekWise uses an **H2 file based database** for persistence.
 
-You can access the H2 console at:
+Access H2 console:  
+http://localhost:8080/h2-console  
 
-http://localhost:8080/h2-console
+JDBC URL  
+jdbc:h2:file:./data/weekwise-db  
 
-Use:
+Username  
+sa  
 
-JDBC URL
-jdbc:h2:file:./data/weekwise-db
-
-Username
-sa
-
-Password
-leave empty
+Password  
+leave empty  
 
 ---
 
 # Example API Endpoints
 
-Create Activity
-POST /api/activities
+Create Activity  
+POST /api/activities  
 
-Get All Activities
-GET /api/activities
+Get All Activities  
+GET /api/activities  
 
-Get Activities By Date
-GET /api/activities/date/{date}
+Get Activities By Date  
+GET /api/activities/date/{date}  
 
-Delete Activity
-DELETE /api/activities/{id}
+Delete Activity  
+DELETE /api/activities/{id}  
 
-Get Today Total
-GET /api/activities/summary/today
+Get Today Total  
+GET /api/activities/summary/today  
 
-Get Weekly Total
-GET /api/activities/summary/week
+Get Weekly Total  
+GET /api/activities/summary/week  
 
 ---
 
